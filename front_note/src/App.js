@@ -1,15 +1,12 @@
 import React,{Fragment} from "react";
-import { Notification, Section } from "rbx";
-import "rbx/index.css";
-import './App.scss'
+//import { Notification, Section } from "rbx";
+//import "rbx/index.css";
+import './App.scss';
+import Routes from './routes'
 
 const App = ()=> (
   <Fragment>
-    <Section>
-      <Notification color="success">
-        Javascript Notes
-      </Notification>
-    </Section>
+    <Routes/>
   </Fragment>
 )
 
