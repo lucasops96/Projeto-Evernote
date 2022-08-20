@@ -8,3 +8,7 @@
 - Criar notas
 - Excluir notas
 - Atualizar notas
+
+<p align="center">
+  <img src="./Evernote-Screens/home.jpg" />
+</p>
