@@ -7,8 +7,16 @@ nav.navbar {
     .navbar-brand {
         img {
             height: 40px;
-            margin-top:15px;
+            margin-top: 15px;
         }
     }
+
+    
 }
 
+.navbar-logged {
+    background-color: $custom-purple;
+    .navbar-menu {
+        background-color: $custom-purple;
+    }
+}
