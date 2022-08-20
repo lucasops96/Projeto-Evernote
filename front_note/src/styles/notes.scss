@@ -1,8 +1,13 @@
 @import './custom_colors';
 
 
-.notes{
+.notes {
     height: calc(100% - 70px);
     margin-left: 0px;
     margin-right: 0px;
+}
+
+.bm-menu {
+    background: white;
+    padding-top: 10px;
 }
