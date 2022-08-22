@@ -1,9 +1,45 @@
-import React, { Fragment, useState } from "react"
-import { Column, Button } from "rbx"
+import React, { Fragment, useState, useEffect } from "react"
+import { Column } from "rbx"
 import '../../styles/notes.scss'
 import { push as Menu } from "react-burger-menu"
+import List from '../notes/list'
+import NotesServices from "../../services/notes"
 
 const Notes = (props) => {
+    const [notes, setNotes] = useState([]);
+    const [current_note, setCurrentNote] = useState({ title: "", body: "", id: "" });
+
+    async function fetchNotes() {
+        const response = await NotesServices.index();
+        if (response.data.length >= 1) {
+            setNotes(response.data.reverse())
+            setCurrentNote(response.data[0])
+        }else{
+            setNotes([])
+        }
+    }
+
+    const createNote = async ()=>{
+        await NotesServices.create()
+        fetchNotes()
+    }
+
+    const deleteNote = async (note)=>{
+        await NotesServices.delete(note._id)
+        fetchNotes()
+    }
+
+    const selectNote = (id) => {
+        const note = notes.find((note) => {
+            return note._id == id;
+        })
+        setCurrentNote(note);
+    }
+
+    useEffect(() => {
+        fetchNotes();
+    }, []);
+
     return (
         <Fragment>
             <Column.Group className="notes" id="notes">
@@ -21,7 +57,12 @@ const Notes = (props) => {
                             Search...
                         </Column>
                     </Column.Group>
-                    <p>List...</p>
+                    <List
+                        notes={notes}
+                        selectNote={selectNote}
+                        current_note={current_note}
+                        deleteNote={deleteNote} 
+                        createNote={createNote} />
                 </Menu>
 
 
