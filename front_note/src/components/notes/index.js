@@ -3,6 +3,7 @@ import { Column } from "rbx"
 import '../../styles/notes.scss'
 import { push as Menu } from "react-burger-menu"
 import List from '../notes/list'
+import Editor from '../notes/editor'
 import NotesServices from "../../services/notes"
 
 const Notes = (props) => {
@@ -27,6 +28,15 @@ const Notes = (props) => {
     const deleteNote = async (note)=>{
         await NotesServices.delete(note._id)
         fetchNotes()
+    }
+
+    const updateNote = async (oldNote, params) =>{
+        const update_Note = await NotesServices.update(oldNote._id, params)
+        const index = notes.indexOf(oldNote)
+        const newNotes = notes
+        newNotes[index] = update_Note.data
+        setNotes(newNotes)
+        setCurrentNote(update_Note.data)
     }
 
     const selectNote = (id) => {
@@ -67,7 +77,9 @@ const Notes = (props) => {
 
 
                 <Column size={12} className="notes-editor" id="notes-editor">
-                    Editor...
+                    <Editor 
+                    updateNote={updateNote}
+                    note={current_note} />
                 </Column>
             </Column.Group>
         </Fragment>
