@@ -14,6 +14,7 @@
 - Criar notas
 - Excluir notas
 - Atualizar notas
+- Pesquisar uma nota
 ## Home Screen
 <p align="center">
   <img src="./Evernote-Screens/home.jpg" />
