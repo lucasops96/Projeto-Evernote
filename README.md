@@ -29,3 +29,13 @@
 <p align="center">
   <img src="./Evernote-Screens/login.jpg" />
 </p>
+
+## Notes Screen
+<p align="center">
+  <img src="./Evernote-Screens/search.jpg" />
+</p>
+
+## User update Screen
+<p align="center">
+  <img src="./Evernote-Screens/update_user.jpg" />
+</p>
